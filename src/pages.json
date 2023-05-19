@@ -1,0 +1,54 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "我的考试"
+			}
+		},
+		{
+			"path": "pages/wrong/wrong",
+			"style": {
+				"navigationBarTitleText": "错题本"
+			}
+		},
+		{
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		}
+	],
+	"tabBar": {
+		"color": "#000",
+		"selectedColor": "#ff6146",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home-select.png",
+				"text": "我的考试"
+			}, 
+			{
+				"pagePath": "pages/wrong/wrong",
+				"iconPath": "static/category.png",
+				"selectedIconPath": "static/category-select.png",
+				"text": "错题本"
+			},
+			{
+				"pagePath": "pages/user/user",
+				"iconPath": "static/user.png",
+				"selectedIconPath": "static/user-select.png",
+				"text": "个人中心"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "exam-mini",
+		"navigationBarBackgroundColor": "#36c1ba",
+		"backgroundColor": "#fafafa"
+	}
+}
