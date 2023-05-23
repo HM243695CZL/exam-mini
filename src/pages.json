@@ -17,6 +17,18 @@
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
+		},
+		{
+			"path": "pages/examing/examing",
+			"style": {
+				"navigationBarTitleText": "正在考试"
+			}
+		},
+		{
+			"path": "pages/view-paper/view-paper",
+			"style": {
+				"navigationBarTitleText": "查看试卷"
+			}
 		}
 	],
 	"tabBar": {

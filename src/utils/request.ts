@@ -1,5 +1,5 @@
 import store from '@/store';
-export const baseUrl = 'http://localhost:9090/wx/';
+export const baseUrl = 'http://192.168.1.13:9090/wx/';
 export const SUCCESS_CODE = 200;
 
 interface RequestObj {

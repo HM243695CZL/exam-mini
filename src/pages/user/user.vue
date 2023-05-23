@@ -5,9 +5,9 @@
 				<view class="left">
 					<view class="name">{{userInfo.nickName}}</view>
 				</view>
-				<image v-if="userInfo.id" class="img-avatar" mode="aspectFill" :src="userInfo.avatar"></image>
+				<image class="img-avatar" mode="aspectFill" :src="userInfo.avatar"></image>
 			</view>
-			<view class="logout-btn" v-if="userInfo.id">
+			<view class="logout-btn" >
 				<view class="logout" @click="logout()">退出登录</view>
 			</view>
 			<view class="technical-support">
@@ -82,7 +82,8 @@ const getUserInfo = () => {
 	});
 };
 const logout = () => {
-	
+	uni.clearStorage();
+	store.dispatch('setUserInfo',{});
 };
 onShow(() => {
 	state.sessionId = '';
