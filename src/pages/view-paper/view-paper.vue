@@ -9,6 +9,7 @@
 					<view class="question-list-row" v-for="(ele, index) in item.questionList" :key="ele.id">
 						<view class="question-name">
 							<view class="index-number">{{index + 1}} .</view><ParseHtml :content="ele.question" />
+							<view class="score">({{ele.score}}分)</view>
 						</view>
 						<view class="question-item-list">
 							<view class="question-item" v-for="(e, i) in ele.questionItemList" :key="e.id">
@@ -107,7 +108,7 @@
 					border-bottom: 1px solid #ccc;
 				}
 				.question-list{
-					padding: $uni-padding;
+					padding: 0 50rpx;
 					.question-list-row{
 						margin-bottom: $uni-padding-half;
 						border-bottom: 1px solid #ccc;
@@ -117,6 +118,11 @@
 								position: absolute;
 								top: 20rpx;
 								left: -$uni-padding;
+							}
+							.score{
+								position: absolute;
+								top: 20rpx;
+								right: -50rpx;
 							}
 						}
 						.question-item-list{

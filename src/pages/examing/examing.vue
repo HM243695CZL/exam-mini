@@ -14,6 +14,7 @@
 					<view class="question-title">
 						<view class="index-number">{{state.currentQuestionIndex + 1}}.</view>
 						<ParseHtml :content="state.currentQuestionInfo.question" />
+						<view class="score">({{state.currentQuestionInfo.score}}分)</view>
 					</view>
 					<view class="list-item-box">
 						<radio-group @change="changeAnswer">
@@ -179,22 +180,19 @@
 
 					.question-title {
 						font-weight: 700;
-						padding: 0 $uni-padding;
+						padding: 0 40rpx;
 						position: relative;
 						.index-number {
 							position: absolute;
 							top: 20rpx;
 							left: 0;
 						}
-
-						.question-name {
-							line-height: 25px;
-
-							::v-deep p {
-								display: inline-block;
-								color: #000;
-							}
+						.score{
+							position: absolute;
+							top: 20rpx;
+							right: 0;
 						}
+
 					}
 
 					.list-item-box {

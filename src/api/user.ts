@@ -7,3 +7,4 @@ export const getMyExamApi = `${baseUserApi}getMyExam`;
 export const previewPaperApi = `${baseUserApi}preview`;
 export const submitPaperApi = `${baseUserApi}submitPaper`;
 export const viewPaperApi = `${baseUserApi}view`;
+export const wrongBookPageApi = `${baseUserApi}wrongBookPage`;

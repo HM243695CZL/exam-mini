@@ -16,6 +16,7 @@
 					<view class="start-exam" v-else @click="clickStartExam(item.id)">开始考试</view>
 				</view>
 			</view>
+			<uni-pagination :total="state.total" :pageSize="state.pageSize" @change="changePage"/>
 		</view>
 		<view class="no-data" v-else>暂无数据</view>
 	</view>
@@ -30,16 +31,17 @@
 	const state = reactive({
 		dataList: [],
 		pageIndex: 1,
-		pageSize: 10
+		pageSize: 10,
+		total: 0
 	});
 	const getMyExam = () => {
 		postAction(getMyExamApi, {
 			pageIndex: state.pageIndex,
 			pageSize: state.pageSize
 		}).then(res => {
-			console.log(res);
 			if (res.status === SUCCESS_CODE) {
 				state.dataList = res.data.list;
+				state.total = res.data.total;
 			}
 		})
 	};
@@ -52,6 +54,10 @@
 		uni.navigateTo({
 			url: '/pages/examing/examing?id=' + id
 		});
+	};
+	const changePage = e => {
+		state.pageIndex = e.current;
+		getMyExam();
 	};
 	onShow(() => {
 		getMyExam();
