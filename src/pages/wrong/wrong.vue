@@ -4,12 +4,16 @@
 			<view class="card-item" v-for="(item, index) in state.dataList" :key="item.id">
 				<view class="question-name">
 					<view class="index-number">{{index + 1}} .</view><ParseHtml :content="item.questionName" />
+					<view class="count">{{item.wrongCount}}</view>
 				</view>
 				<view class="question-item-list">
 					<view :class="['question-item', item.correctAnswerId === e.id ? 'active' : '']" v-for='(e, i) in item.questionItemList' :key='e.id'>
 						<view class="option-item">{{state.itemIndex[i]}}</view>
 						<ParseHtml :content="e.name" />
 					</view>
+				</view>
+				<view class="analysis">
+					解析: <ParseHtml :content="item.analysis" />
 				</view>
 			</view>
 			<uni-pagination :total="state.total" :pageSize="state.pageSize" @change="changePage"/>
@@ -66,6 +70,12 @@ onLoad(() => {
 					top: 20rpx;
 					left: -$uni-padding;
 				}
+				.count{
+					position: absolute;
+					top: 20rpx;
+					right: -20rpx;
+					color: #dd4a68;
+				}
 			}
 			.question-item-list{
 				.question-item{
@@ -83,6 +93,9 @@ onLoad(() => {
 						text-align: center;
 					}
 				}
+			}
+			.analysis{
+				color: $uni-color-price;
 			}
 		}
 	}
