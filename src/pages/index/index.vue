@@ -1,24 +1,29 @@
 <template>
 	<view class="index-container">
-		<view class="card-list" v-if="state.dataList.length">
-			<view class="card-item" v-for="item in state.dataList" :key="item.id">
-				<view class="name">{{item.name}}</view>
-				<view class="item-body">
-					<view class="info">
-						<view class="row">试题信息: {{item.questionInfo}}</view>
-						<view class="row">题数: {{item.questionCount}}</view>
-						<view class="row">总分: {{item.score}}</view>
+		<view class="box" v-if="userInfo.id">
+			<view class="card-list" v-if="state.dataList.length">
+				<view class="card-item" v-for="item in state.dataList" :key="item.id">
+					<view class="name">{{item.name}}</view>
+					<view class="item-body">
+						<view class="info">
+							<view class="row">试题信息: {{item.questionInfo}}</view>
+							<view class="row">题数: {{item.questionCount}}</view>
+							<view class="row">总分: {{item.score}}</view>
+						</view>
+						<view v-if="item.examScore !== null" class="score">得分: {{item.examScore}}</view>
 					</view>
-					<view v-if="item.examScore !== null" class="score">得分: {{item.examScore}}</view>
+					<view class="btn-box">
+						<view class="view-exam" v-if="item.examScore !== null" @click="clickViewPaper(item.id)">查看试卷</view>
+						<view class="start-exam" v-else @click="clickStartExam(item.id)">开始考试</view>
+					</view>
 				</view>
-				<view class="btn-box">
-					<view class="view-exam" v-if="item.examScore !== null" @click="clickViewPaper(item.id)">查看试卷</view>
-					<view class="start-exam" v-else @click="clickStartExam(item.id)">开始考试</view>
-				</view>
+				<uni-pagination :total="state.total" :pageSize="state.pageSize" @change="changePage"/>
 			</view>
-			<uni-pagination :total="state.total" :pageSize="state.pageSize" @change="changePage"/>
+			<view class="no-data" v-else>暂无数据</view>
 		</view>
-		<view class="no-data" v-else>暂无数据</view>
+		<view class="no-login" v-else @click="clickGoLogin">
+			<button type="primary">去登录</button>
+		</view>
 	</view>
 </template>
 
@@ -26,8 +31,9 @@
 	import { postAction } from '@/api/common';
 	import { getMyExamApi } from '@/api/user';
 	import { SUCCESS_CODE } from '@/utils/request';
-	import { reactive } from 'vue';
+	import { computed, reactive } from 'vue';
 	import { onShow } from '@dcloudio/uni-app';
+	import store from '@/store';
 	const state = reactive({
 		dataList: [],
 		pageIndex: 1,
@@ -59,6 +65,14 @@
 		state.pageIndex = e.current;
 		getMyExam();
 	};
+	const clickGoLogin = () => {
+		uni.switchTab({
+			url: '/pages/user/user'
+		});
+	}
+	const userInfo = computed(() => {
+		return store.state.userInfo.userInfo;
+	});
 	onShow(() => {
 		getMyExam();
 	});
@@ -116,6 +130,15 @@
 						background: #dd4a68;
 					}
 				}
+			}
+		}
+		.no-login{
+			margin-top: 100rpx;
+			padding: $uni-padding;
+			button{
+				color: $uni-color-white;
+				background-color: $uni-color-base;
+				margin-bottom: 50rpx;
 			}
 		}
 	}

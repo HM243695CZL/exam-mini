@@ -21,7 +21,7 @@
 							<view class="list-item" v-for="(item, index) in state.currentQuestionInfo.questionItemList"
 								:key="item.id">
 								<radio :value="item.id" :checked="state.answerMap[state.currentQuestionInfo.id] === item.id" />{{state.itemIndex[index] + '. '}}
-								<ParseHtml :content="item.name" />
+								<ParseHtml style="margin-top: -20rpx;" :content="item.name" />
 							</view>
 						</radio-group>
 					</view>
@@ -76,7 +76,6 @@
 	};
 	const changeAnswer = e => {
 		state.answerMap[state.currentQuestionInfo.id] = e.target.value;
-		console.log(state.answerMap);
 	};
 	const changeQuestion = type => {
 		if (type === 'prev') {
@@ -202,6 +201,7 @@
 							justify-content: flex-start;
 							align-items: flex-start;
 							margin-bottom: 10px;
+							padding: $uni-padding-half;
 							color: #000;
 
 							.item {
