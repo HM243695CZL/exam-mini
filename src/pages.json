@@ -30,7 +30,15 @@
 				"navigationBarTitleText": "查看试卷"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/update-avatar/update-avatar",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改头像和昵称"
+            }
+            
+        }
+    ],
 	"tabBar": {
 		"color": "#000",
 		"selectedColor": "#ff6146",

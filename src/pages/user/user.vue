@@ -5,7 +5,10 @@
 				<view class="left">
 					<view class="name">{{userInfo.nickName}}</view>
 				</view>
-				<image class="img-avatar" mode="aspectFill" :src="userInfo.avatar"></image>
+				<view class="avatar-box">
+					<image class="img-avatar" mode="aspectFill" :src="userInfo.avatar"></image>
+					<view class="edit" @click="clickEdit()">修改</view>
+				</view>
 			</view>
 			<view class="logout-btn" >
 				<view class="logout" @click="logout()">退出登录</view>
@@ -81,9 +84,19 @@ const getUserInfo = () => {
 		}
 	});
 };
+const clickEdit = () => {
+	uni.navigateTo({
+		url: '/pages/update-avatar/update-avatar'
+	})
+}
 const logout = () => {
 	uni.clearStorage();
 	store.dispatch('setUserInfo',{});
+};
+const showUserInfo = data => {
+	if (data) {
+		getUserInfo();
+	}
 };
 onShow(() => {
 	state.sessionId = '';
@@ -95,6 +108,9 @@ onShow(() => {
 })
 onLoad((option: any) => {
 	
+});
+defineExpose({
+	showUserInfo
 })
 </script>
 
@@ -114,10 +130,19 @@ onLoad((option: any) => {
 						font-size: 50rpx;
 					}
 				}
-				.img-avatar{
-					width: 120rpx;
-					height: 120rpx;
-					border-radius: 50%;
+				.avatar-box{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					.img-avatar{
+						width: 120rpx;
+						height: 120rpx;
+						border-radius: 50%;
+					}
+					.edit{
+						color: $uni-color-white;
+						font-size: 40rpx;
+					}
 				}
 			}
 			.logout-btn{
