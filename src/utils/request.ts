@@ -1,5 +1,5 @@
 import store from '@/store';
-export const baseUrl = 'https://hl243695czyn.cn/wx/';
+export const baseUrl = 'http://hlczyn.free.idcfengye.com/wx/';
 export const SUCCESS_CODE = 200;
 
 interface RequestObj {
@@ -8,8 +8,7 @@ interface RequestObj {
 	data: any;
 }
 export const request = ({url, method, data}: RequestObj, showLoading: boolean = true) => {
-	let token = "Bearer ";
-	token += uni.getStorageSync('token');
+	let token = uni.getStorageSync('token') ?  "Bearer " + uni.getStorageSync('token') : '';
 	let httpDefaultOpts: any = {
 		url: baseUrl + url,
 		data: data,

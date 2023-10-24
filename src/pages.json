@@ -38,6 +38,14 @@
             }
             
         }
+        ,{
+            "path" : "pages/review/review",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "复习资料"
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#000",
@@ -57,6 +65,12 @@
 				"selectedIconPath": "static/category-select.png",
 				"text": "错题本"
 			},
+			{
+				"pagePath": "pages/review/review",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home-select.png",
+				"text": "复习资料"
+			}, 
 			{
 				"pagePath": "pages/user/user",
 				"iconPath": "static/user.png",
