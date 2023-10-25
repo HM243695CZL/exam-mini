@@ -10,3 +10,5 @@ export const viewPaperApi = `${baseUserApi}view`;
 export const wrongBookPageApi = `${baseUserApi}wrongBookPage`;
 export const changeNicknameAndAvatarApi = `${baseUserApi}changeNicknameAndAvatar`;
 export const policyApi = `${baseUserApi}policy`;
+export const getReviewTypeListApi = `${baseUserApi}getReviewTypeList`;
+export const getReviewInfoApi = `${baseUserApi}getReviewInfo`;

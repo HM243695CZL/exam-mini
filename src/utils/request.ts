@@ -1,5 +1,5 @@
 import store from '@/store';
-export const baseUrl = 'http://hlczyn.free.idcfengye.com/wx/';
+export const baseUrl = 'https://hl243695czyn.cn/wx/';
 export const SUCCESS_CODE = 200;
 
 interface RequestObj {
